@@ -19,7 +19,8 @@ class SlackdownTest < Minitest::Test
   end
 
   should "convert HTML entities" do
-    assert_converts '&lt;' => "<"
+    assert_converts "&lt;" => "<",
+                    "&times;" => "×"
   end
 
   should "ignore single line breaks" do

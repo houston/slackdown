@@ -119,7 +119,7 @@ module Kramdown
       end
 
       def convert_entity(el)
-        ENTITIES.fetch(el.options[:original])
+        el.value.char
       end
 
 
@@ -171,12 +171,6 @@ module Kramdown
         raquo_space: " »",
         laquo: "«",
         raquo: "»" }.freeze
-
-      ENTITIES = {
-        "&lt;" => "<",
-        "&gt;" => ">",
-        "&amp;" => "&",
-        "&quot;" => "\"" }.freeze
 
     end
   end
