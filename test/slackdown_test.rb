@@ -57,6 +57,22 @@ class SlackdownTest < Minitest::Test
                     "<code>code</code>" => "`code`"
   end
 
+  should "not process code within codeblocks" do
+    assert_converts <<~Markdown => <<~TEXT
+      ```
+      <p>
+          <b>Bold</b> <i>Italic</i>
+      </p>
+      ```
+    Markdown
+      ```
+      <p>
+          <b>Bold</b> <i>Italic</i>
+      </p>
+      ```
+    TEXT
+  end
+
   should "convert headers to bold paragraphs with space before them" do
     assert_converts "# H1\nParagraph" => "\n\n*H1*\nParagraph",
                     "## H2\nParagraph" => "\n\n*H2*\nParagraph",
@@ -160,7 +176,7 @@ class SlackdownTest < Minitest::Test
 private
 
   def convert(markdown)
-    Slackdown.convert(markdown, input: "GFM")
+    Slackdown.convert(markdown)
   end
 
   def assert_converts(hash)

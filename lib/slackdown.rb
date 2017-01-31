@@ -5,7 +5,7 @@ require "kramdown/converter/slack"
 module Slackdown
 
   def self.convert(markdown, options={})
-    Kramdown::Document.new(markdown, options).to_slack
+    Kramdown::Document.new(markdown, options.merge(input: "GFM")).to_slack
   end
 
 end

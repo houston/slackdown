@@ -66,7 +66,7 @@ module Kramdown
       end
 
       def convert_codeblock(el)
-        "```\n#{el.value}```"
+        "```\n#{el.value}```\n\n"
       end
 
       def convert_a(el)
