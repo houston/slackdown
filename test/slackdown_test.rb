@@ -2,6 +2,10 @@ require "test_helper"
 
 class SlackdownTest < Minitest::Test
 
+  should "convert nil" do
+    assert_converts nil => ""
+  end
+
   should "convert escaped characters without escaping" do
     assert_converts '\*' => "*",
                     '\`' => "`",
