@@ -1,6 +1,7 @@
 require "slackdown/version"
 require "kramdown"
 require "kramdown/converter/slack"
+require "kramdown-parser-gfm"
 
 module Slackdown
 
