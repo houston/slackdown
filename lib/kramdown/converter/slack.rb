@@ -70,6 +70,7 @@ module Kramdown
       end
 
       def convert_a(el)
+        return "<#{el.attr["href"]}|#{el.children.first.value}>" unless el.children.empty?
         el.attr["href"]
       end
       alias :convert_html_a :convert_a
