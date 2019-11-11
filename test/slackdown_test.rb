@@ -96,7 +96,9 @@ class SlackdownTest < Minitest::Test
   end
 
   should "replace links with their URL (Slack will unfurl them)" do
-    assert_converts "[Google](http://github.com)" => "http://github.com",
+    assert_converts "[Google](http://github.com)" => "<http://github.com|Google>",
+                    "[](http://github.com)" => "http://github.com",
+                    "http://github.com" => "http://github.com",
                     '<a href="http://github.com" />' => "http://github.com"
   end
 

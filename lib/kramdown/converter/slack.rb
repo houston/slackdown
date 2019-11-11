@@ -70,7 +70,9 @@ module Kramdown
       end
 
       def convert_a(el)
-        el.attr["href"]
+        content = inner(el)
+        return el.attr["href"] if content.nil? || content == ""
+        "<#{el.attr["href"]}|#{content}>"
       end
       alias :convert_html_a :convert_a
 
